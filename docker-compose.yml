@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  db:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_BD: postgres
+    ports:
+      - '5432:5432'
+
+  php:
+    container_name: slim_framework
+    build: ./backend
+    command: php -S 0.0.0.0:8080 -t ./backend
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    volumes:
+      - .:/var/www/html
+
+  web:
+    container_name: vuejs
+    build: ./frontend
+    command: npm run serve
+    ports:
+      - "80:8080"
+    depends_on:
+      - php
