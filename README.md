@@ -3,6 +3,7 @@
 ```
 cd frontend
 npm install
+cd ../
 ```
 
 ## Rodar o Projeto 
@@ -29,6 +30,7 @@ CREATE TABLE users (
 Criar a tabela de usuario no banco de dados 
 
 ## API endpoints
+
 ```
 GET /users
 Codes 200
